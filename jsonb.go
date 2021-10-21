@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 )
 
+// JSONB type
 type JSONB map[string]interface{}
 
 // Value for save jsonb in postgres
