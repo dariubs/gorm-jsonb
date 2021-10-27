@@ -34,6 +34,6 @@ func (m *JSONB) Scan(src interface{}) error {
 	if err != nil {
 		return err
 	}
-	*m = StringInterfaceMap(_m)
+	*m = JSONB(_m)
 	return nil
 }
