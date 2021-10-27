@@ -17,7 +17,7 @@ func (v JSONB) Value() (driver.Value, error) {
 
 // Scan unmarshal data in JSONB map
 func (v *JSONB) Scan(value interface{}) error {
-	err := json.Unmarshal(value.([]byte), &v)
+	err := json.Unmarshal([]byte(value), &v)
 
 	return err
 }
