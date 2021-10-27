@@ -25,6 +25,8 @@ func (m *JSONB) Scan(src interface{}) error {
 	switch src.(type) {
 	case []uint8:
 		source = []byte(src.([]uint8))
+	case string:
+		source = []byte(src.(string))
 	case nil:
 		return nil
 	default:
