@@ -16,8 +16,28 @@ func (v JSONB) Value() (driver.Value, error) {
 }
 
 // Scan unmarshal data in JSONB map
-func (v *JSONB) Scan(value interface{}) error {
+func (m *JSONB) Scan(src interface{}) error {
 	err := json.Unmarshal([]byte(value), &v)
 
 	return err
+
+
+	var source []byte
+	_m := make(map[string]interface{})
+
+
+	switch src.(type) {
+	case []uint8:
+		source = []byte(src.([]uint8))
+	case nil:
+		return nil
+	default:
+		return errors.New("incompatible type for StringInterfaceMap")
+	}
+	err := json.Unmarshal(source, &_m)
+	if err != nil {
+		return err
+	}
+	*m = StringInterfaceMap(_m)
+	return nil
 }
