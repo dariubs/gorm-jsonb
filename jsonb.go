@@ -3,6 +3,7 @@ package gormjsonb
 import (
 	"database/sql/driver"
 	"encoding/json"
+	"errors"
 )
 
 // JSONB type
@@ -17,14 +18,9 @@ func (v JSONB) Value() (driver.Value, error) {
 
 // Scan unmarshal data in JSONB map
 func (m *JSONB) Scan(src interface{}) error {
-	err := json.Unmarshal([]byte(value), &v)
-
-	return err
-
 
 	var source []byte
 	_m := make(map[string]interface{})
-
 
 	switch src.(type) {
 	case []uint8:
